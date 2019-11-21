@@ -16,7 +16,7 @@ class Workshop {
       ],
       user_id: [
         rule('required'),
-        rule('userExists', 'users', 'id')
+        rule('exists', ['users', 'id'])
       ]
     }
   }
