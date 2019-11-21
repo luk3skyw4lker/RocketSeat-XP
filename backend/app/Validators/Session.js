@@ -1,7 +1,11 @@
 'use strict'
 
 class Session {
-  get rules () {
+  get validateAll() {
+    return true;
+  }
+
+  get rules() {
     return {
       email: 'email|required',
       password: 'required'

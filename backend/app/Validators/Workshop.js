@@ -2,6 +2,10 @@
 const { sanitize, rule } = use('Validator');
 
 class Workshop {
+  get validateAll() {
+    return true;
+  }
+
   get rules() {
     return {
       title: [
