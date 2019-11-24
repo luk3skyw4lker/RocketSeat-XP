@@ -1,6 +1,5 @@
 'use strict'
-
-/** @typedef {import('@adonisjs/lucid/src/Lucid/Model')} Model */
+/** @typedef {import('@adonisjs/lucid/src/Lucid/Model')} */
 const Workshop = use('App/Models/Workshop');
 
 class WorkshopController {
@@ -14,6 +13,13 @@ class WorkshopController {
    * @param {View} ctx.view
    */
   async index({ request, response, view }) {
+    const workshops = await Workshop.query()
+      .with('user', builder => {
+        builder.select(['id', 'name'])
+      })
+      .fetch();
+
+    return workshops;
   }
 
   /**
@@ -47,6 +53,13 @@ class WorkshopController {
    * @param {View} ctx.view
    */
   async show({ params, request, response, view }) {
+    const workshop = await Workshop.find(params.id);
+
+    await workshop.load('user', builder => {
+      builder.select(['id', 'name', 'github', 'linkedin']);
+    });
+
+    return workshop;
   }
 
   /**

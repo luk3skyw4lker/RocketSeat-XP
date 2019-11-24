@@ -20,5 +20,10 @@ Route.post('/forgot', 'ForgotPasswordController.store').validator('Forgot');
 Route.post('/reset', 'ResetPasswordController.store').validator('Reset');
 
 Route.group(() => {
+  Route.put('/profile', 'ProfileController.update');
+
   Route.post('/workshops', 'WorkshopController.store').validator('Workshop');
+
+  Route.get('/workshops', 'WorkshopController.index');
+  Route.get('/workshop/:id', 'WorkshopController.show');
 }).middleware('auth');

@@ -1,4 +1,5 @@
 'use strict'
+const Antl = use('Antl');
 
 class Forgot {
   get validateAll() {
@@ -9,6 +10,10 @@ class Forgot {
     return {
       email: 'email|required'
     }
+  }
+
+  get messages() {
+    return Antl.list('validation')
   }
 }
 

@@ -14,7 +14,7 @@ trait('DatabaseTransactions');
 
 test('it should send an email with forgot password instructions', async ({
   assert,
-  client,
+  client
 }) => {
   Mail.fake();
 
@@ -34,7 +34,7 @@ test('it should send an email with forgot password instructions', async ({
   assert.equal(recentEmail.message.to[0].address, email);
 
   assert.include(token.toJSON(), {
-    type: 'forgotPassword',
+    type: 'forgotPassword'
   });
 
   Mail.restore();
@@ -52,7 +52,7 @@ test('it should reset password', async ({ assert, client }) => {
     .send({
       token: userToken.token,
       password: '1234567',
-      password_confirmation: '1234567',
+      password_confirmation: '1234567'
     })
     .end();
 
@@ -65,7 +65,7 @@ test('it should reset password', async ({ assert, client }) => {
 });
 
 test('it should not be able to reset password after 2h of previous request', async ({
-  client,
+  client
 }) => {
   const email = 'lucashenriqueblemos@gmail.com';
   const user = await Factory.model('App/Models/User').create({ email });
@@ -86,7 +86,7 @@ test('it should not be able to reset password after 2h of previous request', asy
     .send({
       token: userToken.token,
       password: '1234567',
-      password_confirmation: '1234567',
+      password_confirmation: '1234567'
     })
     .end();
 

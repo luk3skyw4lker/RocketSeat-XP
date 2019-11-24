@@ -8,11 +8,11 @@ trait('DatabaseTransactions');
 
 test('it should return JWT token when session created', async ({
   assert,
-  client,
+  client
 }) => {
   const sessionPayload = {
     email: 'lucashenriqueblemos@gmail.com',
-    password: '123456',
+    password: '123456'
   };
 
   await Factory.model('App/Models/User').create(sessionPayload);
