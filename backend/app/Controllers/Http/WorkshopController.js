@@ -12,10 +12,10 @@ class WorkshopController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index({ request, response, view }) {
+  async index() {
     const workshops = await Workshop.query()
       .with('user', builder => {
-        builder.select(['id', 'name'])
+        builder.select(['id', 'name', 'avatar']);
       })
       .fetch();
 
@@ -52,11 +52,11 @@ class WorkshopController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show({ params, request, response, view }) {
+  async show({ params }) {
     const workshop = await Workshop.find(params.id);
 
     await workshop.load('user', builder => {
-      builder.select(['id', 'name', 'github', 'linkedin']);
+      builder.select(['id', 'name', 'github', 'linkedin', 'avatar']);
     });
 
     return workshop;
@@ -70,7 +70,21 @@ class WorkshopController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update({ params, request, response }) {
+  async update({ params, request }) {
+    const data = request.only([
+      'title',
+      'description',
+      'user_id',
+      'section'
+    ]);
+
+    const workshop = await Workshop.find(params.id);
+
+    workshop.merge(data);
+
+    await workshop.save();
+
+    return workshop;
   }
 
   /**
@@ -82,6 +96,11 @@ class WorkshopController {
    * @param {Response} ctx.response
    */
   async destroy({ params, request, response }) {
+    const workshop = await Workshop.find(params.id);
+
+    workshop.delete();
+
+    return response.status(204).json(null);
   }
 }
 
