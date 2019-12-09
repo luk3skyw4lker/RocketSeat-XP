@@ -14,6 +14,10 @@ class WorkshopSchema extends Schema {
         .inTable('users')
         .onDelete('SET NULL')
         .onUpdate('CASCADE');
+      table
+        .string('color')
+        .notNullable()
+        .defaultTo('#7159c1');
       table.string('title').notNullable();
       table.text('description').notNullable();
       table.enu('section', [1, 2, 3]).notNullable();
