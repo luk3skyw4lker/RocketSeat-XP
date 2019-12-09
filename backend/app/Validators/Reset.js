@@ -1,4 +1,3 @@
-'use strict'
 const Antl = use('Antl');
 
 class Reset {
@@ -10,12 +9,12 @@ class Reset {
     return {
       token: 'required',
       password: 'required|confirmed'
-    }
+    };
   }
 
   get messages() {
-    return Antl.list('validation')
+    return Antl.list('validation');
   }
 }
 
-module.exports = Reset
+module.exports = Reset;

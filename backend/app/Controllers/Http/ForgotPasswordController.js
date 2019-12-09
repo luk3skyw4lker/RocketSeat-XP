@@ -17,7 +17,7 @@ class ForgotPasswordController {
 
     await user.tokens().create({
       token,
-      type: 'forgotPassword',
+      type: 'forgotPassword'
     });
 
     const resetUrl = `${Env.get('FRONT_URL')}/reset?token=${token}`;

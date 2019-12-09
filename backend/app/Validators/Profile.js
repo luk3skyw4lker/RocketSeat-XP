@@ -1,4 +1,3 @@
-'use strict'
 const Antl = use('Antl');
 
 class Profile {
@@ -15,7 +14,7 @@ class Profile {
   }
 
   get messages() {
-    return Antl.list('validation')
+    return Antl.list('validation');
   }
 }
 

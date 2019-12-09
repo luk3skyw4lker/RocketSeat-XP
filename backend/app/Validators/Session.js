@@ -1,4 +1,3 @@
-'use strict'
 const Antl = use('Antl');
 
 class Session {
@@ -14,8 +13,8 @@ class Session {
   }
 
   get messages() {
-    return Antl.list('validation')
+    return Antl.list('validation');
   }
 }
 
-module.exports = Session
+module.exports = Session;

@@ -1,4 +1,3 @@
-'use strict'
 const Antl = use('Antl');
 
 class Forgot {
@@ -9,12 +8,12 @@ class Forgot {
   get rules() {
     return {
       email: 'email|required'
-    }
+    };
   }
 
   get messages() {
-    return Antl.list('validation')
+    return Antl.list('validation');
   }
 }
 
-module.exports = Forgot
+module.exports = Forgot;

@@ -1,5 +1,4 @@
-'use strict'
-/** @typedef {import('@adonisjs/lucid/src/Lucid/Model')} */
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Workshop = use('App/Models/Workshop');
 
 class WorkshopController {
@@ -100,7 +99,7 @@ class WorkshopController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy({ params, request, response }) {
+  async destroy({ params, response }) {
     const workshop = await Workshop.find(params.id);
 
     workshop.delete();
@@ -109,4 +108,4 @@ class WorkshopController {
   }
 }
 
-module.exports = WorkshopController
+module.exports = WorkshopController;

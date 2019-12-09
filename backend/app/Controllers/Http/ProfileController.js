@@ -1,6 +1,14 @@
 const Helpers = use('Helpers');
 
 class ProfileController {
+  /**
+   * Create/save a new subscription.
+   * POST workshops/:workshop_id/subscriptions
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {import('@adonisjs/auth/src/Schemes/Session')} ctx.auth
+   */
   async update({ request, auth }) {
     const data = request.only([
       'name',
@@ -40,4 +48,4 @@ class ProfileController {
   }
 }
 
-module.exports = ProfileController
+module.exports = ProfileController;

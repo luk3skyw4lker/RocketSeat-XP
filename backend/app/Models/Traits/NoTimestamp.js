@@ -2,11 +2,11 @@ class NoTimestamp {
   register(Model) {
     Object.defineProperties(Model, {
       createdAtColumn: {
-        get: () => null,
+        get: () => null
       },
       updatedAtColumn: {
-        get: () => null,
-      },
+        get: () => null
+      }
     });
   }
 }
